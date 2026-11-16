@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="UNO LEVELING — Build consistency. Track your progress. Become exceptional.">
+  <title>UNO LEVELING — The 1% Standard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">U</span><span>UNO<span class="brand-light"> LEVELING</span></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="side-nav">
+        <button class="nav-link active" data-view="overview"><span>◫</span> Overview</button>
+        <button class="nav-link" data-view="quests"><span>◎</span> My quests</button>
+        <button class="nav-link" data-view="progress"><span>↗</span> Progress</button>
+        <button class="nav-link" data-view="library"><span>✳</span> Inspiration</button>
+      </nav>
+      <div class="sidebar-bottom"><div class="system-chip"><span class="status-dot"></span> SYSTEM OPERATIONAL</div><a href="/admin" class="admin-shortcut">Administrator access ↗</a></div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu icon-button" id="menuBtn" aria-label="Open menu">☰</button>
+        <div class="breadcrumb">YOUR SPACE <span>/</span> <b id="pageName">OVERVIEW</b></div>
+        <div class="top-actions"><span class="top-date" id="todayDate"></span><button class="avatar" id="profileInitial">U</button></div>
+      </header>
+
+      <section class="auth-screen" id="authScreen">
+        <div class="auth-card">
+          <div class="brand auth-brand"><span class="brand-mark">U</span><span>UNO<span class="brand-light"> LEVELING</span></span></div>
+          <p class="eyebrow">THE 1% STANDARD</p><h1>Consistency is<br><span>your advantage.</span></h1>
+          <p class="muted">A personal system for discipline, focus and measurable progress.</p>
+          <div class="auth-tabs"><button class="auth-tab active" data-auth="login">Sign in</button><button class="auth-tab" data-auth="register">Create account</button></div>
+          <form id="authForm">
+            <label id="usernameLabel" class="hidden">Username</label><input id="usernameInput" class="field hidden" autocomplete="username" placeholder="Choose a username">
+            <label>Email or username</label><input id="loginInput" class="field" required autocomplete="username" placeholder="Enter email or username">
+            <label id="emailLabel" class="hidden">Email address</label><input id="emailInput" class="field hidden" type="email" autocomplete="email" placeholder="you@example.com">
+            <label>Password</label><input id="passwordInput" class="field" type="password" required minlength="10" autocomplete="current-password" placeholder="At least 10 characters">
+            <button class="button button-light full-width" id="authSubmit">Enter your space <span>→</span></button>
+            <p class="form-message" id="authMessage" role="status"></p>
+          </form>
+          <p class="tiny-note">Your progress is personal. Your commitment is yours.</p>
+        </div>
+      </section>
+
+      <section class="dashboard hidden" id="dashboard">
+        <div class="welcome-row"><div><p class="eyebrow">MONDAY MINDSET. EVERYDAY EXECUTION.</p><h1>Welcome back, <span id="welcomeName">Player</span>.</h1><p class="muted">Small actions. Repeated with intention. Exceptional outcomes.</p></div><div class="level-pill"><span>YOUR RANK</span><strong id="rankName">NOVICE</strong></div></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>EXPERIENCE POINTS</span><span>✳</span></div><strong id="xpValue">0 <small>XP</small></strong><div class="progress-track"><div id="xpBar" class="progress-fill" style="width:0%"></div></div><p id="xpNext" class="stat-foot">500 XP to next level</p></article>
+          <article class="stat-card"><div class="stat-top"><span>CURRENT LEVEL</span><span>↗</span></div><strong id="levelValue">01</strong><p class="stat-foot">Earn your next level through action.</p></article>
+          <article class="stat-card"><div class="stat-top"><span>QUESTS COMPLETED</span><span>✓</span></div><strong id="completedValue">0</strong><p class="stat-foot">Every completed commitment counts.</p></article>
+          <article class="stat-card"><div class="stat-top"><span>CONSISTENCY STREAK</span><span>⌁</span></div><strong id="streakValue">0 <small>days</small></strong><p class="stat-foot">Keep showing up for yourself.</p></article>
+        </div>
+        <div class="content-grid">
+          <section class="panel quests-panel"><div class="panel-heading"><div><p class="eyebrow">EXECUTION</p><h2>Today's quests</h2></div><button class="text-button" data-jump="quests">View all ↗</button></div>
+            <form class="quick-add" id="quickQuest"><input id="quickQuestTitle" class="field" required maxlength="80" placeholder="Add a commitment for today"><button class="button button-light" type="submit">Add quest +</button></form>
+            <div id="questList" class="quest-list"></div>
+          </section>
+          <aside class="right-column"><section class="panel quote-panel"><p class="eyebrow">A NOTE TO YOURSELF</p><div class="quote-mark">“</div><blockquote id="featuredQuote">You do not rise to the level of your goals. You fall to the level of your systems.</blockquote><p class="quote-author" id="quoteAuthor">— SYSTEM NOTE</p></section>
+          <section class="panel sponsor-panel"><p class="eyebrow">PARTNER SPOTLIGHT</p><div id="sponsorList"><p class="muted small">Thoughtful partners will appear here.</p></div></section></aside>
+        </div>
+      </section>
+
+      <section class="subpage hidden" id="subpage">
+        <div class="page-heading"><p class="eyebrow" id="subEyebrow">YOUR SPACE</p><h1 id="subTitle">My quests</h1><p class="muted" id="subDescription"></p></div>
+        <div class="panel" id="subContent"></div>
+      </section>
+      <footer class="footer"><span>UNO LEVELING © <span id="year"></span></span><span>BUILT FOR THE COMMITTED.</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+</body></html>
