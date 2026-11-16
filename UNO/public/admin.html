@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#080808"><title>UNO LEVELING — Admin</title><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><script defer src="/admin.js"></script></head>
+<body class="admin-body">
+  <main class="admin-wrap">
+    <header class="admin-top"><a class="brand" href="/"><span class="brand-mark">U</span><span>UNO<span class="brand-light"> / ADMIN</span></span></a><a class="text-button" href="/">← Back to platform</a></header>
+    <section class="admin-login panel" id="adminLogin">
+      <p class="eyebrow">RESTRICTED ENVIRONMENT</p><h1>Administrator<br><span>control centre.</span></h1><p class="muted">Authorised access only. Credentials are verified by the server.</p>
+      <form id="adminLoginForm"><label>Admin username</label><input class="field" id="adminUsername" required autocomplete="username" placeholder="Administrator username"><label>Secret passcode</label><input class="field" id="adminPasscode" type="password" required autocomplete="current-password" placeholder="Enter secret passcode"><button class="button button-light full-width">Authenticate ↗</button><p class="form-message" id="adminLoginMessage"></p></form>
+    </section>
+    <section class="admin-console hidden" id="adminConsole">
+      <div class="admin-heading"><div><p class="eyebrow">SYSTEM MANAGEMENT</p><h1>Control centre.</h1><p class="muted">Manage the content and operations of UNO LEVELING.</p></div><button class="button button-outline" id="adminLogout">Sign out</button></div>
+      <div class="admin-stats" id="adminStats"></div>
+      <div class="admin-tabs"><button class="admin-tab active" data-tab="sponsors">Sponsors & ads</button><button class="admin-tab" data-tab="quotes">Quotes</button></div>
+      <section class="admin-panel panel" id="sponsorsPanel">
+        <div class="panel-heading"><div><p class="eyebrow">PARTNERSHIPS</p><h2>Manage sponsors</h2></div></div>
+        <form id="sponsorForm" class="admin-form" enctype="multipart/form-data">
+          <div class="form-grid"><div><label>Company / sponsor name</label><input class="field" name="name" required maxlength="100" placeholder="Sponsor name"></div><div><label>Website URL</label><input class="field" name="websiteUrl" type="url" placeholder="https://example.com"></div></div>
+          <label>Description / advert copy</label><textarea class="field textarea" name="description" maxlength="500" placeholder="Write a short description"></textarea>
+          <label>Upload sponsor image or banner <span class="muted">(JPG, PNG, WEBP or GIF · max 5MB)</span></label><input class="file-field" type="file" name="image" accept="image/jpeg,image/png,image/webp,image/gif" id="sponsorImage"><div class="image-preview hidden" id="imagePreviewWrap"><img id="imagePreview" alt="Selected sponsor preview"><button type="button" class="text-button" id="clearImage">Remove image</button></div>
+          <label class="check-row"><input type="checkbox" name="active" checked> Publish this sponsor immediately</label><button class="button button-light" type="submit">Save sponsor +</button><p class="form-message" id="sponsorMessage"></p>
+        </form>
+        <div class="admin-list" id="sponsorAdminList"></div>
+      </section>
+      <section class="admin-panel panel hidden" id="quotesPanel">
+        <div class="panel-heading"><div><p class="eyebrow">EDITORIAL LIBRARY</p><h2>Manage quotes</h2></div></div>
+        <form id="quoteForm" class="admin-form"><label>Quote</label><textarea class="field textarea" name="quote" required maxlength="500" placeholder="Enter quote text"></textarea><div class="form-grid"><div><label>Author</label><input class="field" name="author" maxlength="100" placeholder="Author name"></div><div><label>Category</label><input class="field" name="category" maxlength="60" placeholder="Discipline"></div></div><label class="check-row"><input type="checkbox" name="active" checked> Publish quote</label><button class="button button-light" type="submit">Save quote +</button><p class="form-message" id="quoteMessage"></p></form>
+        <div class="admin-list" id="quoteAdminList"></div>
+      </section>
+      <p class="tiny-note">Admin actions are restricted to this authenticated session. Keep your deployment secrets private.</p>
+    </section>
+  </main>
+  <div class="toast" id="adminToast" role="status"></div>
+</body></html>
